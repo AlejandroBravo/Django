@@ -2,7 +2,10 @@
  {% load crispy_forms_tags %}
  {% block head_tittle %}Bienvenidos | {% endblock %}
  
- {% block jumbotron_content%}
+ {% block jumbotron%}
+  <div class="jumbotron">
+
+
  <div class='row'>
  	<div class="col-sm-3 pull-right">
  		<p class="lead" text-align-center>{{ titulo }}</p>
@@ -23,6 +26,7 @@
 <div class="col-sm-3">
 	<p class="lead" text-align-center>Y por la nota</p>
 </div>
+      </div>
 {% endblock %}
 
 {{ titulo }}<br>
