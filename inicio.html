@@ -16,12 +16,16 @@
 </style>
  
  {% block jumbotron%}
+
+{% if request.user.is_staff %}
+{{ queryset }}
+{% else %}
+
 <div class="jumbotron">
 <div class="container">
 
  <div class='row'>
  	<div class="col-sm-3 pull-right">
- 		<p class="lead" text-align-center>{{ titulo }}</p>
          <h1>Probar Django</h1>
         <p class="lead" text-align-center>Un proyecto para principantes bla bla bla matadme ya</p>
         <a class="btn btn-lg btn-primary" href="../../components/navbar/" role="button">Unete y sufre &raquo;</a>
@@ -30,6 +34,7 @@
 </div>
 </div>
 </div>
+<div style="display: flex;">
 <div class="col-sm-3">
 	<p class="lead" text-align-center>Creado con Django<br><br><span class="fa-stack fa-5x">
    <i class="fa fa-spinner fa-spin fa-stack-2x"></i>
@@ -45,17 +50,27 @@
   </span></p>
 </div>
 
+<div class="col-sm-3">Subscribirte</p>
+</div>
+{% endif %}
 {% endblock %}
 
-{{ titulo }}<br>
+<p class="lead text-align-center"> {{ titulo }}</p>
 {{ request.user }}
 <hr>
 <br>
 
 {% block content %}
+{% if not request.user.is_staff %}
+{% if not user.is_authenticated %}
 <form method="POST" action="">{% csrf_token %}
 {{ el_form|crispy }}
-<input type="submit" value="Registrame">
+<input class="btn btn-primary" type="submit" value="Enviar">
 </form>
+{% else %}
+<p class="lead text-align-center"> {{ titulo }} <br> <br> <br> <i class="fa fa-hand-peace-o fa-5x" aria-hidden="true"></i></p>
+{% endif %}
 <hr>
+{% endif %}
 {% endblock %}
+</div>

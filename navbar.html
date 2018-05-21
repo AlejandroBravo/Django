@@ -17,6 +17,7 @@
         </ul>
         {% if not request.user.is_authenticated and not "/accounts/login" in request.get_full_path %}
         <form class="navbar-form navbar-right" method="POST" action="{% url 'auth_login' %}">{% csrf_token %}
+          <div style="display: flex;">
           <div class="form-group">
             <input type="text" name="username" class="form-control" placeholder="Usuario">
           </div>
@@ -24,6 +25,7 @@
             <input type="password" name="password" class="form-control" placeholder="Clave">
           </div>
           <button type="submit" class="btn btn-default">Entrar</button>
+          </div>
         </form>
         {% endif %}
         <ul class="nav navbar-nav navbar-right">
