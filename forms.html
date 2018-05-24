@@ -5,10 +5,10 @@
 <hr/>
 
 {%block content %}
-<div class="row">
+<div class="row" style="margin-left: 6%">
 	<div class="col-sm-6 col-sm-offset-3">
 {% if titulo %}
-<h1 class="text_align_center">{{ titulo }}</h1>
+<h1 style="text-align: center;">{{ titulo }}</h1>
 {% endif %}		
 <form method="POST" action="">{% csrf_token %}
 {{ form|crispy }}
